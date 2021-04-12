@@ -27,7 +27,12 @@
                         </div>
                         <div class="form-group">
                             <label for="Nama">Nama</label>
-                            <input type="Nama" name="Nama" class="form-control" id="Nama" aria-describedby="Nama">
+                            <select name="Kelas" id="Kelas" class="form-select">
+                                <option selected disabled>Pilih Kelas</option>
+                            @foreach($kelas as $Kelas)
+                                <option value="{{ $Kelas->id }}">{{ $Kelas->nama_kelas }}</option>
+                            @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="Kelas">Kelas</label>
@@ -44,7 +49,7 @@
                                 aria-describedby="tanggalLahir" placeholder="Year-Month-Day">
                         </div>
                         <div class="form-group">
-                            <label for="No_Handphone">No_Handphone</label>
+                            <label for="No_Handphone">No Handphone</label>
                             <input type="No_Handphone" name="No_Handphone" class="form-control" id="No_Handphone"
                                 aria-describedby="No_Handphone">
                         </div>
