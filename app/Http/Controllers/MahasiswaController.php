@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use App\Models\Kelas;
 
 class MahasiswaController extends Controller
 {
@@ -15,8 +16,9 @@ class MahasiswaController extends Controller
     public function index()
     {
         //fungsi eloquent menampilkan data menggunakan pagination
-        $mahasiswa = Mahasiswa::paginate(5);
-        return view('mahasiswa.index', ['mahasiswa' => $mahasiswa]);
+        $mahasiswas = Mahasiswa::with('kelas')->paginate(3);
+        $paginate = Mahasiswa::orderBy('Nim', 'asc')->paginate(3);
+        return view('mahasiswas.index', ['mahasiswas' => $mahasiswas, 'paginate' => $paginate]);
     }
 
     /**
